@@ -30,30 +30,31 @@ This project investigates whether generative AI models like Sora and Kling produ
 
 ## Pipeline Overview
 
-```mermaid
-flowchart TD
-    A[Data Collection] --> B1[Collect Ground-Truth Images (Google Maps Street View)]
-    A --> B2[Generate AI Videos (Sora & Kling AI)]
-    B1 --> C1[Split Images Vertically]
-    B2 --> C2[Sample Video Frames]
-    C1 --> D[Feature Analysis]
-    C2 --> D
-    D --> E1[Vegetation Analyzer (GVI)]
-    D --> E2[VGG Feature Extraction]
-    D --> E3[Color Distribution Analysis]
-    D --> E4[Car & Human Detection (YOLOv9e)]
-    D --> E5[Urban Feature Detection (DeepLabv3+)]
-    E1 --> F[Results Compilation]
-    E2 --> F
-    E3 --> F
-    E4 --> F
-    E5 --> F
-    F --> G[Bias Analysis]
-    G --> H1[Style Consistency]
-    G --> H2[Color Bias]
-    G --> H3[Content Preservation]
-    G --> H4[Artifact Detection]
-    G --> H5[Overall Bias]
+```text
+1. Data Collection
+   ├─ Collect ground-truth images (Google Maps Street View)
+   └─ Create AI-generated videos (Sora & Kling AI) for European and Middle Eastern cities
+
+2. Data Preprocessing
+   ├─ Split each collected image into three vertical sections
+   └─ Sample frames from each AI-generated video
+
+3. Feature Analysis
+   ├─ Vegetation analysis (Green View Index, DeepLabV3)
+   ├─ Visual feature extraction (VGG16)
+   ├─ Color distribution computation
+   ├─ Human and vehicle detection (YOLOv9e)
+   └─ Urban feature segmentation (DeepLabV3Plus)
+
+4. Results Compilation
+   └─ Aggregate all extracted features and organize for comparison
+
+5. Bias Analysis
+   ├─ Style consistency checks
+   ├─ Color bias computation
+   ├─ Content preservation assessment
+   ├─ Artifact detection
+   └─ Overall bias summary (per city & per region)
 ```
 
 ---
